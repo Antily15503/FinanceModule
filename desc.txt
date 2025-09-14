@@ -18,7 +18,7 @@ Inputs:
     - 01: compute and return maximum
     - 10: add new user
     - 11: add (or subtract if negative) shares of asset to database
-ready signal: assert in order to 
+start signal: assert in order to start process. will cause ready signal to go down
 
 if operation is 11 use these signals:
 name (in number ID)
@@ -27,3 +27,4 @@ value (16 bit value)
 Outputs:
 user ID of wealthiest user (should change only when Opcode is 01)
 total asset value
+ready signal
