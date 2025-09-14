@@ -1,0 +1,29 @@
+Create a module that stores values of the ownership of assets of a parameterized # of people. At each operation we want to
+calculate the individual 
+
+Values to store for each individual's account:
+    - Name (a numeric ID in order of entry. IE: user 1 = 000001, user 2 = 000002, etc.)
+    - value of assets (ASSET_COUNT number of data entries)
+
+Note: while ready is asserted, input signals should NOT change.
+
+Signals from top module:
+Parameters: USER_CAPACITY - # of available individual account slots
+            ASSET_COUNT -  # of available number of assets to track
+
+Inputs:
+[0:ASSET_COUNT - 1] signals representing the prices of assets
+[0:2] Operations the machine can operate in:
+    - 00: idle
+    - 01: compute and return maximum
+    - 10: add new user
+    - 11: add (or subtract if negative) shares of asset to database
+ready signal: assert in order to 
+
+if operation is 11 use these signals:
+name (in number ID)
+value (16 bit value)
+
+Outputs:
+user ID of wealthiest user (should change only when Opcode is 01)
+total asset value
