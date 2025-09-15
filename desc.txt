@@ -14,10 +14,10 @@ Parameters: USER_CAPACITY - # of available individual account slots
 Inputs:
 [0:ASSET_COUNT - 1] signals representing the prices of assets
 [0:2] Operations the machine can operate in:
-    - 00: idle
-    - 01: compute and return maximum
-    - 10: add new user
-    - 11: add (or subtract if negative) shares of asset to database
+    - 00: compute and return number of assets user has
+    - 01: create new user, output the number associated with this user
+    - 11: add/subtract shares of asset to user
+    - 10: return total value of assets of given user
 start signal: assert in order to start process. will cause ready signal to go down
 
 if operation is 11 use these signals:
@@ -25,6 +25,10 @@ name (in number ID)
 value (16 bit value)
 
 Outputs:
-user ID of wealthiest user (should change only when Opcode is 01)
-total asset value
+user ID output
+    - if op is 00, this represents user ID of wealthiest user
+    - if op is 01, this represents user ID of newly created user
+total asset value output (should change only when Opcode is 00)
+    - if op is 00
 ready signal
+error signal
